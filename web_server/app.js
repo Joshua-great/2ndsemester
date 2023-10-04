@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const webRoutes = require('../routes/webRoutes'); // Import your web routes
 
-// Serve static files (HTML, CSS, etc.) from the public folder
+const app = express();
+
+
+app.use('/', webRoutes);
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Handle 404 errors

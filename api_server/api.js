@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('../config/mongoose'); // Import your Mongoose configuration module
+const apiRoutes = require('../routes/apiRoutes'); // Import your API routes
 const { createUser } = require('./auth');
 const { authenticateUser, authorizeRole } = require('./auth');
 const crypto = require('crypto');
@@ -7,7 +9,13 @@ const errorHandler = require('./errorHandler'); // Import your error handling mo
 const app = express();
 require('dotenv').config();
 
-const secretKey = process.env.PORT || generateSecretKey();
+
+
+
+const app = express();
+app.use('/api', apiRoutes);
+
+
 
 function generateSecretKey() {
   // Generate a random secret key
